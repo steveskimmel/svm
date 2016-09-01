@@ -1,0 +1,35 @@
+<ion-view view-title="Calculate Sales Velocity">
+  <ion-content class = "padding">
+    <div class="list">
+       <label class="item item-input item-stacked-label">
+       <span class="input-label">Deals</span>
+       <input type="text" placeholder="Please enter the number of deals" ng-model = "calcSales.deals">
+       </label>
+
+       <label class="item item-input item-stacked-label">
+       <span class="input-label">Deals Size</span>
+       <input type="text" placeholder="Please enter the average deal size" ng-model = "calcSales.dealsSize">
+       </label>
+
+       <label class="item item-input item-stacked-label">
+       <span class="input-label">Average Win Rate (%)</span>
+       <input type="text" placeholder="Please enter the average win rate" ng-model = "calcSales.averageWinRate">
+       </label>
+
+       <label class="item item-input item-stacked-label">
+       <span class="input-label">Average Sales Cycle</span>
+       <input type="text" placeholder="Please enter the average sales cycle" ng-model = "calcSales.averageSalesCycle">
+       </label>
+    </div>
+    <button class="button button-block">
+       Calculate Sales Velocity
+    </button>
+
+    <div class="card">
+       <div class="item item-text-wrap">
+          Calculated Sales Per Year: {{test.first}}
+       </div>
+    </div>
+
+  </ion-content>
+</ion-view>

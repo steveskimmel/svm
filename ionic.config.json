@@ -1,0 +1,12 @@
+{
+  "name": "svm",
+  "app_id": "6fe1f068",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}

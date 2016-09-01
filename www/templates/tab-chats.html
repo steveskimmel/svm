@@ -1,0 +1,53 @@
+<ion-view view-title="Vary Sales Velocity">
+  <ion-content class = "padding">
+    <label class="item item-input item-stacked-label">
+    <span class="input-label">Target Sales Value</span>
+    <input type="text" placeholder="Please enter target sales value">
+    </label>
+
+    <div class="card">
+       <div class="item item-text-wrap">
+          Target value for sales per year: {{test.first}}
+       </div>
+    </div>
+
+    <div class = "list">
+      <ion-item>
+        <ion-label>Percentage increase on Deals: {{rangeModel.percDeals}}%</ion-label>
+        <div class = "item range">
+          <i>0</i>
+           <input type = "range" name = "range1" ng-model = "rangeModel.percDeals" min = "0" max = "100">
+          <i>100</i>
+        </div>
+     </ion-item>
+
+     <ion-item>
+       <ion-label>Percentage increase on Deals Size: {{rangeModel.percDealsSize}}%</ion-label>
+       <div class = "item range">
+         <i>0</i>
+          <input type = "range" name = "range1" ng-model = "rangeModel.percDealsSize" min = "0" max = "100">
+         <i>100</i>
+       </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Percentage increase on Average Win Rate: {{rangeModel.percAverageWinRate}}%</ion-label>
+      <div class = "item range">
+        <i>0</i>
+         <input type = "range" name = "range1" ng-model = "rangeModel.percAverageWinRate" min = "0" max = "100">
+        <i>100</i>
+      </div>
+   </ion-item>
+
+   <ion-item>
+     <ion-label>Percentage increase on Average Sales Cycle: {{rangeModel.percAverageSalesCycle}}%</ion-label>
+     <div class = "item range">
+       <i>0</i>
+        <input type = "range" name = "range1" ng-model = "rangeModel.percAverageSalesCycle" min = "0" max = "100">
+       <i>100</i>
+     </div>
+  </ion-item>
+     </div>
+
+  </ion-content>
+</ion-view>

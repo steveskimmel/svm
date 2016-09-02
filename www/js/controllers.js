@@ -149,12 +149,4 @@ angular.module('starter.controllers', [])
                   });
               }
 
-
-// $scope.salesValue = $rootScope.salesValue;
-}.controller('AboutCtrl', function($state, $scope, $http, $rootScope) {
-
-
-
-
-
-}))
+})

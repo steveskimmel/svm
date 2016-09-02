@@ -7444,7 +7444,7 @@ ion-slides {
  */
 .spinner {
   text-align: center;
-  stroke: #444;
+  stroke: #86BC40;
   fill: #444; }
   .spinner svg {
     width: 28px;
@@ -7478,7 +7478,7 @@ ion-slides {
     fill: #444; }
 
 .spinner-android {
-  stroke: #4b8bf4; }
+  stroke: #86BC40; }
 
 .spinner-ios,
 .spinner-ios-small {

@@ -67,6 +67,8 @@ angular.module('starter.controllers', [])
         $state.reload();
 })
 
+///////////////////////////////////////////////////////////////////////////////////////////
+
 .controller('ChatsCtrl', function($state, $scope, $http, $rootScope, ionicToast) {
     $state.reload();
 
@@ -81,6 +83,7 @@ angular.module('starter.controllers', [])
     currentSales: $rootScope.salesValue,
     targetSales: null,
     percUplift: 0,
+    varUplift: null,
     hideValue: false
   }
 
@@ -98,7 +101,7 @@ angular.module('starter.controllers', [])
     //  $scope.rangeModel.percUplift = (($scope.rangeModel.targetSales - $scope.rangeModel.currentSales)/ $scope.rangeModel.currentSales)*100;
     //  console.log("per value uplift: "+$scope.rangeModel.percUplift)
 
-      $scope.percentageVariableIncrease();
+      //$scope.percentageVariableIncrease();
 
         $http({
               method:"POST",
@@ -114,8 +117,8 @@ angular.module('starter.controllers', [])
                }
              },
           }).then(function successCallback(response) {
-            console.log(response.status);
-            if(response.status === '500' || response.status === 404)
+            //console.log(response.status);
+            if(response.status === 500 || response.status === 404)
             {
               $scope.showToast();
             }
@@ -133,7 +136,7 @@ angular.module('starter.controllers', [])
                 $scope.rangeModel.hideValue = false;
 
               }
-              console.log(response.status);
+              //console.log(response.status);
             });
       }
 
@@ -153,7 +156,7 @@ angular.module('starter.controllers', [])
                      },
                   }).then(function successCallback(response) {
                       console.log(response.data);
-                      $scope.rangeModel.percUplift = response.data;
+                      $scope.rangeModel.varUplift = response.data;
                       $scope.rangeValueSet();
 
                     }, function errorCallback(response) {
@@ -162,12 +165,62 @@ angular.module('starter.controllers', [])
             }
 
             $scope.rangeValueSet = function() {
-              $scope.rangeModel.percDeals = $scope.rangeModel.percUplift;
-              $scope.rangeModel.percDealsSize = $scope.rangeModel.percUplift;
-              $scope.rangeModel.percAverageWinRate = $scope.rangeModel.percUplift;
-              $scope.rangeModel.percAverageSalesCycle = $scope.rangeModel.percUplift;
+              $scope.rangeModel.percDeals = $scope.rangeModel.varUplift;
+              $scope.rangeModel.percDealsSize = $scope.rangeModel.varUplift;
+              $scope.rangeModel.percAverageWinRate = $scope.rangeModel.varUplift;
+              $scope.rangeModel.percAverageSalesCycle = $scope.rangeModel.varUplift;
 
             }
+
+            //
+            $scope.percUpliftAfterSliderChange = function() {
+
+              $scope.rangeModel.hideValue = true;
+
+              //  $scope.rangeModel.percUplift = (($scope.rangeModel.targetSales - $scope.rangeModel.currentSales)/ $scope.rangeModel.currentSales)*100;
+              //  console.log("per value uplift: "+$scope.rangeModel.percUplift)
+
+                //$scope.percentageVariableIncrease();
+
+                  $http({
+                        method:"POST",
+                        url:"https://digitalforce-sales-model.herokuapp.com/",
+                        headers: {
+                            "cache-control": "no-cache",
+                            "content-type": "application/json"
+                        },
+                        data: {
+                          'sales_perc_increase':
+                          {
+                            'new_sales': $scope.rangeModel.targetSales
+                         }
+                       },
+                    }).then(function successCallback(response) {
+                      //console.log(response.status);
+                      if(response.status === 500 || response.status === 404)
+                      {
+                        $scope.showToast();
+                      }
+                      else {
+                        $scope.rangeModel.hideValue = false;
+                          //console.log(response);
+                          console.log("percentage uplift is: "+response.data+" now we call percentage var increase method");
+                          $scope.rangeModel.percUplift = response.data;
+                          //$scope.percentageVariableIncrease();
+                       }
+                      }, function errorCallback(response) {
+                        if(response.status === 500 || response.status === 404)
+                        {
+                          $scope.showToast();
+                          $scope.rangeModel.hideValue = false;
+
+                        }
+                        //console.log(response.status);
+                      });
+
+
+            }
+            //
 
             $scope.rangeModelChange = function() {
                   $http({
@@ -188,7 +241,10 @@ angular.module('starter.controllers', [])
                        },
                     }).then(function successCallback(response) {
                         console.log("new target sales value: "+response.data);
+
+                      //
                         $scope.rangeModel.targetSales = response.data;
+                        $scope.percUpliftAfterSliderChange();
                       }, function errorCallback(response) {
                         console.log(response);
                   });

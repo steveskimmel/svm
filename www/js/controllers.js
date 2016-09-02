@@ -11,7 +11,8 @@ angular.module('starter.controllers', [])
       averageWinRate: null,
       averageSalesCycle: null,
       value: null,
-      hideValue: false
+      hideValue: false,
+      haveCalc: false
     }
 
     $scope.showToast = function(){
@@ -45,6 +46,7 @@ angular.module('starter.controllers', [])
                 $scope.calcSales.hideValue = false;
                   console.log(response.data);
                   $scope.calcSales.value = response.data;
+                  $scope.calcSales.haveCalc = true;
                   $rootScope.salesValue = $scope.calcSales.value;
                   console.log("rootscope: "+$rootScope.salesValue)
                 }, function errorCallback(response) {

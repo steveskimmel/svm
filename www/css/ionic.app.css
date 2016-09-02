@@ -8322,6 +8322,7 @@ input:checked + .checkbox-icon:after {
   background-size: 99% 2px;
   background-repeat: no-repeat;
   -webkit-appearance: none;
+
   /*
    &::-ms-track{
      background: transparent;

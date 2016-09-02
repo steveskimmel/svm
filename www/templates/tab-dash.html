@@ -1,7 +1,7 @@
 <ion-view view-title="Calculate Sales Velocity" style="background-color:#586261" hide-nav-bar="true">
   <ion-content class = "padding" background-color = "#0e0f0f">
     <div class="list">
-        
+
        <label class="item item-input item-stacked-label col col-center"  style="border-color: Transparent;">
        <span class="input-label" style="color: #f8f8f8;" >Deals </span>
        <input type="number" placeholder="Please enter the number of deals" ng-model="calcSales.deals" style="background-color: #f8f8f8;">
@@ -28,9 +28,9 @@
     </button>
     <div class="spinner" ng-show="calcSales.hideValue">
         <ion-spinner icon="lines"></ion-spinner>
-      </div>
-      <br/>
-      <h4 style="color: #f8f8f8;">Calculated Sales Per Year: {{calcSales.value}}</h4>
+    </div>
+    <br/>
+    <h4 style="color: #f8f8f8;">Calculated Sales Per Year: {{calcSales.value}}</h4>
 
   </ion-content>
 </ion-view>

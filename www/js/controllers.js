@@ -2,7 +2,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('DashCtrl', function($state, $scope, $http, $rootScope) {
+.controller('DashCtrl', function($state, $scope, $http, $rootScope, ionicToast) {
 
     $scope.calcSales =
     {
@@ -13,6 +13,11 @@ angular.module('starter.controllers', [])
       value: null,
       hideValue: false
     }
+
+    $scope.showToast = function(){
+    <!-- ionicToast.show(message, position, stick, time); -->
+      ionicToast.show('API ERROR.', 'top', true, 2500);
+    };
 
       $scope.calculate = function() {
         $scope.calcSales.hideValue = true;
@@ -33,18 +38,32 @@ angular.module('starter.controllers', [])
                    }
                  },
               }).then(function successCallback(response) {
+                if(response.status === 500 || response.status === 404)
+                {
+                  $scope.showToast();
+                }
                 $scope.calcSales.hideValue = false;
                   console.log(response.data);
                   $scope.calcSales.value = response.data;
                   $rootScope.salesValue = $scope.calcSales.value;
                   console.log("rootscope: "+$rootScope.salesValue)
                 }, function errorCallback(response) {
-                  console.log(response);
+                  console.log(response.data);
+                  if(response.status === 500 || response.status === 404)
+                  {
+                    $scope.calcSales.hideValue = false;
+                    $scope.showToast();
+                    $scope.calcSales.deals = "";
+                    $scope.calcSales.dealsSize = "";
+                    $scope.calcSales.averageWinRate = "";
+                    $scope.calcSales.averageSalesCycle = "";
+
+                  }
                 });
               }
     })
 
-.controller('ChatsCtrl', function($state, $scope, $http, $rootScope) {
+.controller('ChatsCtrl', function($state, $scope, $http, $rootScope, ionicToast) {
     $state.reload();
 
   console.log("this is in new controller: "+$rootScope.salesValue)
@@ -57,12 +76,20 @@ angular.module('starter.controllers', [])
     percAverageSalesCycle : 0,
     currentSales: $rootScope.salesValue,
     targetSales: null,
-    percUplift: 0
+    percUplift: 0,
+    hideValue: false
   }
+
+  $scope.showToast = function(){
+  <!-- ionicToast.show(message, position, stick, time); -->
+    ionicToast.show('API ERROR!', 'top', true, 2500);
+  };
 
   //change method one
 
   $scope.targetValChange = function() {
+
+    $scope.rangeModel.hideValue = true;
 
     //  $scope.rangeModel.percUplift = (($scope.rangeModel.targetSales - $scope.rangeModel.currentSales)/ $scope.rangeModel.currentSales)*100;
     //  console.log("per value uplift: "+$scope.rangeModel.percUplift)
@@ -83,12 +110,25 @@ angular.module('starter.controllers', [])
                }
              },
           }).then(function successCallback(response) {
-              console.log(response);
-              console.log("percentage uplift is: "+response.data+" now we call percentage var increase method");
-              $scope.rangeModel.percUplift = response.data;
-              $scope.percentageVariableIncrease();
+            console.log(response.status);
+            if(response.status === '500' || response.status === 404)
+            {
+              $scope.showToast();
+            }
+            else {
+              $scope.rangeModel.hideValue = false;
+                //console.log(response);
+                console.log("percentage uplift is: "+response.data+" now we call percentage var increase method");
+                $scope.rangeModel.percUplift = response.data;
+                $scope.percentageVariableIncrease();
+             }
             }, function errorCallback(response) {
-              console.log(response);
+              if(response.status === 500 || response.status === 404)
+              {
+                $scope.showToast();
+
+              }
+              console.log(response.status);
             });
       }
 
@@ -148,5 +188,4 @@ angular.module('starter.controllers', [])
                         console.log(response);
                   });
               }
-
 })

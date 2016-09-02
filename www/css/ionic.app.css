@@ -7443,6 +7443,7 @@ ion-slides {
  * --------------------------------------------------
  */
 .spinner {
+  text-align: center;
   stroke: #444;
   fill: #444; }
   .spinner svg {

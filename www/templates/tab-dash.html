@@ -21,9 +21,12 @@
        <input type="number" placeholder="Please enter the average sales cycle" ng-model="calcSales.averageSalesCycle">
        </label>
     </div>
-    <button class="button button-block" ng-click="calculate()">
+    <button class="button button-block"  style="background-color:#000; color:#86BC40;" ng-click="calculate()" ng-hide="calcSales.hideValue">
        Calculate Sales Velocity
     </button>
+    <div class="spinner" ng-show="calcSales.hideValue">
+        <ion-spinner icon="lines"></ion-spinner>
+      </div>
 
     <div class="card">
        <div class="item item-text-wrap">

@@ -10,10 +10,12 @@ angular.module('starter.controllers', [])
       dealsSize: null,
       averageWinRate: null,
       averageSalesCycle: null,
-      value: null
+      value: null,
+      hideValue: false
     }
 
       $scope.calculate = function() {
+        $scope.calcSales.hideValue = true;
             $http({
                   method:"POST",
                   url:"https://digitalforce-sales-model.herokuapp.com/",
@@ -31,6 +33,7 @@ angular.module('starter.controllers', [])
                    }
                  },
               }).then(function successCallback(response) {
+                $scope.calcSales.hideValue = false;
                   console.log(response.data);
                   $scope.calcSales.value = response.data;
                   $rootScope.salesValue = $scope.calcSales.value;
@@ -148,4 +151,10 @@ angular.module('starter.controllers', [])
 
 
 // $scope.salesValue = $rootScope.salesValue;
-})
+}.controller('AboutCtrl', function($state, $scope, $http, $rootScope) {
+
+
+
+
+
+}))

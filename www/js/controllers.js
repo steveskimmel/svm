@@ -63,6 +63,10 @@ angular.module('starter.controllers', [])
               }
     })
 
+.controller('AboutCtrl', function($state, $scope, $http, $rootScope, ionicToast) {
+        $state.reload();
+})
+
 .controller('ChatsCtrl', function($state, $scope, $http, $rootScope, ionicToast) {
     $state.reload();
 

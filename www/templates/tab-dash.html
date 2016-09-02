@@ -1,36 +1,38 @@
-<ion-view view-title="Calculate Sales Velocity" style="background-color:#586261" hide-nav-bar="true">
-  <ion-content class = "padding" background-color = "#0e0f0f">
+<ion-view view-title="Calculate Sales Velocity" style="background-color:#586261;" >
+  <ion-content class = "padding">
     <div class="list">
 
        <label class="item item-input item-stacked-label col col-center"  style="border-color: Transparent;">
-       <span class="input-label" style="color: #f8f8f8;" >Deals </span>
-       <input type="number" placeholder="Please enter the number of deals" ng-model="calcSales.deals" style="background-color: #f8f8f8;">
+       <span class="input-label" style="color: #f8f8f8;" >Deals (#)</span>
+       <input type="number" placeholder=" Current number of deals" ng-model="calcSales.deals" style="background-color: #f8f8f8;">
        </label>
        <br/>
        <label class="item item-input item-stacked-label col col-center" style="border-color: Transparent;">
-       <span class="input-label" style="color: #f8f8f8;">Deals Size</span>
-       <input type="number" placeholder="Please enter the average deal size" ng-model="calcSales.dealsSize" style="background-color: #f8f8f8;">
+       <span class="input-label" style="color: #f8f8f8;">Deals Size (R)</span>
+       <input type="number" placeholder=" Current average deal size" ng-model="calcSales.dealsSize" style="background-color: #f8f8f8;">
        </label>
        <br/>
        <label class="item item-input item-stacked-label col col-center" style="border-color: Transparent;">
        <span class="input-label" style="color: #f8f8f8;">Average Win Rate (%)</span>
-       <input type="number" placeholder="Please enter the average win rate" ng-model="calcSales.averageWinRate" style="background-color: #f8f8f8;">
+       <input type="number" placeholder=" Current average win rate" ng-model="calcSales.averageWinRate" style="background-color: #f8f8f8;">
        </label>
        <br/>
        <label class="item item-input item-stacked-label col col-center" style="border-color: Transparent;">
-       <span class="input-label" style="color: #f8f8f8;">Average Sales Cycle</span>
-       <input type="number" placeholder="Please enter the average sales cycle" ng-model="calcSales.averageSalesCycle" style="background-color: #f8f8f8;">
+       <span class="input-label" style="color: #f8f8f8;">Average Sales Cycle (days)</span>
+       <input type="number" placeholder=" Current average sales cycle" ng-model="calcSales.averageSalesCycle" style="background-color: #f8f8f8;">
        </label>
        <br/>
     </div>
-    <button class="button button-block"  style="border-color: #86BC40; background-color:Transparent; color:#F8F8F8;  box-shadow: 0 1px 4px #86BC40, 0 0 40px #86BC40 inset;" ng-click="calculate()" ng-hide="calcSales.hideValue">
+    <button class="button button-block"  style="border-color: #86BC40; background-color:Transparent; color:#F8F8F8;  box-shadow: 0 1px 4px #86BC40, 0 0 80px #86BC40 inset;" ng-click="calculate()" ng-hide="calcSales.hideValue">
        Calculate Sales Velocity
     </button>
     <div class="spinner" ng-show="calcSales.hideValue">
         <ion-spinner icon="lines"></ion-spinner>
     </div>
-    <br/>
-    <h4 style="color: #f8f8f8;">Calculated Sales Per Year: {{calcSales.value}}</h4>
+
+    <div class="item"style="background-color:#586261; border-color: Transparent">
+       <ion-label style="color: #f8f8f8; text-align:left">Calculated Sales Per Year: {{calcSales.value}}</ion-label>
+    </div>
 
   </ion-content>
 </ion-view>

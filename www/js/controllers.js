@@ -126,6 +126,7 @@ angular.module('starter.controllers', [])
               if(response.status === 500 || response.status === 404)
               {
                 $scope.showToast();
+                $scope.rangeModel.hideValue = false;
 
               }
               console.log(response.status);

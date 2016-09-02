@@ -5,9 +5,12 @@
     <input type="number" placeholder="Please enter target sales value" ng-model="rangeModel.targetSales">
     </label>
 
-    <button class="button button-block" ng-click="targetValChange()">
+    <button class="button button-block" ng-click="targetValChange()" ng-hide="rangeModel.hideValue">
        Calculate Sales Velocity
     </button>
+    <div class="spinner" ng-show="rangeModel.hideValue">
+        <ion-spinner icon="lines"></ion-spinner>
+      </div>
 
     <div class="card">
        <div class="item item-text-wrap">
@@ -23,7 +26,7 @@
         <ion-label>Percentage increase on Deals: {{rangeModel.percDeals}}%</ion-label>
         <div class = "item range">
           <i>0</i>
-           <input type = "range" name = "range1" ng-model = "rangeModel.percDeals" min = "0" max = "100" ng-change="rangeModelChange()">
+           <input type = "range" name = "range1" ng-model = "rangeModel.percDeals" min = "0" max = "100" on-release="rangeModelChange()">
           <i>100</i>
         </div>
      </ion-item>
@@ -32,7 +35,7 @@
        <ion-label>Percentage increase on Deals Size: {{rangeModel.percDealsSize}}%</ion-label>
        <div class = "item range">
          <i>0</i>
-          <input type = "range" name = "range1" ng-model = "rangeModel.percDealsSize" min = "0" max = "100" ng-change="rangeModelChange()">
+          <input type = "range" name = "range1" ng-model = "rangeModel.percDealsSize" min = "0" max = "100" on-release="rangeModelChange()">
          <i>100</i>
        </div>
     </ion-item>
@@ -41,7 +44,7 @@
       <ion-label>Percentage increase on Average Win Rate: {{rangeModel.percAverageWinRate}}%</ion-label>
       <div class = "item range">
         <i>0</i>
-         <input type = "range" name = "range1" ng-model = "rangeModel.percAverageWinRate" min = "0" max = "100" ng-change="rangeModelChange()">
+         <input type = "range" name = "range1" ng-model = "rangeModel.percAverageWinRate" min = "0" max = "100" on-release"rangeModelChange()">
         <i>100</i>
       </div>
    </ion-item>
@@ -50,7 +53,7 @@
      <ion-label>Percentage increase on Average Sales Cycle: {{rangeModel.percAverageSalesCycle}}%</ion-label>
      <div class = "item range">
        <i>0</i>
-        <input type = "range" name = "range1" ng-model = "rangeModel.percAverageSalesCycle" min = "0" max = "100" ng-change="rangeModelChange()">
+        <input type = "range" name = "range1" ng-model = "rangeModel.percAverageSalesCycle" min = "0" max = "100" on-release"rangeModelChange()">
        <i>100</i>
      </div>
   </ion-item>

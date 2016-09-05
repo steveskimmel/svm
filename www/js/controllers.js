@@ -41,7 +41,7 @@ angular.module('starter.controllers', [])
               }).then(function successCallback(response) {
                 if(response.status === 500 || response.status === 404)
                 {
-                  $scope.showToast();
+                  //$scope.showToast();
                 }
                 $scope.calcSales.hideValue = false;
                   console.log(response.data);
@@ -54,7 +54,7 @@ angular.module('starter.controllers', [])
                   if(response.status === 500 || response.status === 404)
                   {
                     $scope.calcSales.hideValue = false;
-                    $scope.showToast();
+                    //$scope.showToast();
                     $scope.calcSales.deals = "";
                     $scope.calcSales.dealsSize = "";
                     $scope.calcSales.averageWinRate = "";
@@ -122,7 +122,7 @@ angular.module('starter.controllers', [])
             //console.log(response.status);
             if(response.status === 500 || response.status === 404)
             {
-              $scope.showToast();
+            //  $scope.showToast();
             }
             else {
               $scope.rangeModel.hideValue = false;
@@ -134,7 +134,7 @@ angular.module('starter.controllers', [])
             }, function errorCallback(response) {
               if(response.status === 500 || response.status === 404)
               {
-                $scope.showToast();
+                //$scope.showToast();
                 $scope.rangeModel.hideValue = false;
 
               }
@@ -201,7 +201,7 @@ angular.module('starter.controllers', [])
                       //console.log(response.status);
                       if(response.status === 500 || response.status === 404)
                       {
-                        $scope.showToast();
+                      //  $scope.showToast();
                       }
                       else {
                         $scope.rangeModel.hideValue = false;
@@ -213,7 +213,7 @@ angular.module('starter.controllers', [])
                       }, function errorCallback(response) {
                         if(response.status === 500 || response.status === 404)
                         {
-                          $scope.showToast();
+                          //$scope.showToast();
                           $scope.rangeModel.hideValue = false;
 
                         }

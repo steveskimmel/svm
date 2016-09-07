@@ -27,7 +27,7 @@
         <ion-label style="color: #f8f8f8;">Increase on Deals: {{rangeModel.percDeals}}%</ion-label>
         <div class = "item range"  style="background-color:#586261; border-color: #f8f8f8">
           <i  style="color: #f8f8f8; background-color:#586261;">0</i>
-           <input type = "range" name = "range1" ng-model = "rangeModel.percDeals" min = "0" max = "100" on-release="rangeModelChange()"  style="background-color:#586261;">
+           <input type = "range" name = "range1" ng-model = "rangeModel.percDeals" min = "0" max = "100" on-change="rangeModelChange()"  style="background-color:#586261;">
           <i  style="color: #f8f8f8; background-color:#586261;">100</i>
         </div>
      </ion-item>
@@ -36,7 +36,7 @@
        <ion-label style="color: #f8f8f8;">Increase on Deals Size: {{rangeModel.percDealsSize}}%</ion-label>
        <div class = "item range" style="background-color:#586261;border-color: #f8f8f8">
          <i style="color: #f8f8f8;">0</i>
-          <input type = "range" name = "range1" ng-model = "rangeModel.percDealsSize" min = "0" max = "100" on-release="rangeModelChange()" style="background-color:#586261;">
+          <input type = "range" name = "range1" ng-model = "rangeModel.percDealsSize" min = "0" max = "100" on-change="rangeModelChange()" style="background-color:#586261;">
          <i style="color: #f8f8f8;">100</i>
        </div>
     </ion-item>
@@ -45,7 +45,7 @@
       <ion-label style="color: #f8f8f8;">Increase on Average Win Rate: {{rangeModel.percAverageWinRate}}%</ion-label>
       <div class = "item range" style="background-color:#586261;border-color: #f8f8f8">
         <i style="color: #f8f8f8;">0</i>
-         <input type = "range" name = "range1" ng-model = "rangeModel.percAverageWinRate" min = "0" max = "100" on-release"rangeModelChange()" style="background-color:#586261;">
+         <input type = "range" name = "range1" ng-model = "rangeModel.percAverageWinRate" min = "0" max = "100" on-change"rangeModelChange()" style="background-color:#586261;">
         <i style="color: #f8f8f8;">100</i>
       </div>
    </ion-item>
@@ -54,7 +54,7 @@
      <ion-label style="color: #f8f8f8;">Increase on Average Sales Cycle: {{rangeModel.percAverageSalesCycle}}%</ion-label>
      <div class = "item range" style="background-color:#586261;border-color: #f8f8f8">
        <i style="color: #f8f8f8;">0</i>
-        <input type = "range" name = "range1" ng-model = "rangeModel.percAverageSalesCycle" min = "0" max = "100" on-release"rangeModelChange()"  style="background-color:#586261;">
+        <input type = "range" name = "range1" ng-model = "rangeModel.percAverageSalesCycle" min = "0" max = "100" on-change"rangeModelChange()"  style="background-color:#586261;">
        <i style="color: #f8f8f8;">100</i>
      </div>
   </ion-item>

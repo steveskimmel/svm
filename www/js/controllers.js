@@ -251,10 +251,10 @@ angular.module('starter.controllers', [])
                         data: {
                           'increased_sales_value':
                           {
-                            'percentage_increase_deals': parseInt($scope.rangeModel.percDeals),
-                            'percentage_increase_deal_size':parseInt($scope.rangeModel.percDealsSize),
-                            'percentage_increase_win_rate':parseInt($scope.rangeModel.percAverageWinRate),
-                            'percentage_increase_avg_sales_cycle':parseInt($scope.rangeModel.percAverageSalesCycle),
+                            'percentage_increase_deals': parseFloat($scope.rangeModel.percDeals),
+                            'percentage_increase_deal_size':parseFloat($scope.rangeModel.percDealsSize),
+                            'percentage_increase_win_rate':parseFloat($scope.rangeModel.percAverageWinRate),
+                            'percentage_increase_avg_sales_cycle':parseFloat($scope.rangeModel.percAverageSalesCycle),
                             'current_deals': parseInt($scope.rangeModel.current_deals),
                             'current_deal_size': parseInt($scope.rangeModel.current_deal_size),
                             'current_win_rate': parseInt($scope.rangeModel.current_win_rate),

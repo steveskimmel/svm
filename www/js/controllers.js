@@ -16,12 +16,19 @@ angular.module('starter.controllers', [])
       haveCalc: false
     }
 
+
     $scope.showToast = function(){
     <!-- ionicToast.show(message, position, stick, time); -->
       ionicToast.show('API ERROR.', 'top', true, 2500);
     };
 
       $scope.calculate = function() {
+
+        $rootScope.current_deals = $scope.calcSales.deals;
+        $rootScope.current_deal_size = $scope.calcSales.dealsSize;
+        $rootScope.current_win_rate = $scope.calcSales.averageWinRate;
+        $rootScope.current_avg_sales_cycle = $scope.calcSales.averageSalesCycle;
+
         $scope.calcSales.hideValue = true;
             $http({
                   method:"POST",
@@ -60,11 +67,6 @@ angular.module('starter.controllers', [])
                   {
                     $scope.calcSales.hideValue = false;
                     //$scope.showToast();
-                    $scope.calcSales.deals = "";
-                    $scope.calcSales.dealsSize = "";
-                    $scope.calcSales.averageWinRate = "";
-                    $scope.calcSales.averageSalesCycle = "";
-
                   }
                 });
               }
@@ -89,6 +91,10 @@ angular.module('starter.controllers', [])
     percAverageSalesCycle : 0,
     currentSales: $rootScope.salesValue,
     decSales: $rootScope.currentDecValue,
+    current_deals:$rootScope.current_deals,
+    current_deal_size:  $rootScope.current_deal_size,
+    current_win_rate: $rootScope.current_win_rate,
+    current_avg_sales_cycle: $rootScope.current_avg_sales_cycle,
     targetSales: null,
     percUplift: 0,
     varUplift: null,
@@ -248,7 +254,11 @@ angular.module('starter.controllers', [])
                             'percentage_increase_deals': parseInt($scope.rangeModel.percDeals),
                             'percentage_increase_deal_size':parseInt($scope.rangeModel.percDealsSize),
                             'percentage_increase_win_rate':parseInt($scope.rangeModel.percAverageWinRate),
-                            'percentage_increase_avg_sales_cycle':parseInt($scope.rangeModel.percAverageSalesCycle)
+                            'percentage_increase_avg_sales_cycle':parseInt($scope.rangeModel.percAverageSalesCycle),
+                            'current_deals': parseInt($scope.rangeModel.current_deals),
+                            'current_deal_size': parseInt($scope.rangeModel.current_deal_size),
+                            'current_win_rate': parseInt($scope.rangeModel.current_win_rate),
+                            'current_avg_sales_cycle': parseInt($scope.rangeModel.current_avg_sales_cycle)
                          }
                        },
                     }).then(function successCallback(response) {

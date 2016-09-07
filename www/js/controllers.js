@@ -11,6 +11,7 @@ angular.module('starter.controllers', [])
       averageWinRate: null,
       averageSalesCycle: null,
       value: null,
+      dec_value: null,
       hideValue: false,
       haveCalc: false
     }
@@ -45,9 +46,13 @@ angular.module('starter.controllers', [])
                 }
                 $scope.calcSales.hideValue = false;
                   console.log(response.data);
-                  $scope.calcSales.value = response.data;
+                  $scope.calcSales.value = response.data.split(';')[0];
+                  $scope.calcSales.dec_value = parseFloat(response.data.split(';')[1]);
+                  console.log($scope.calcSales.value);
+                  console.log($scope.calcSales.dec_value);
                   $scope.calcSales.haveCalc = true;
                   $rootScope.salesValue = $scope.calcSales.value;
+                  $rootScope.currentDecValue = $scope.calcSales.dec_value
                   console.log("rootscope: "+$rootScope.salesValue)
                 }, function errorCallback(response) {
                   console.log(response.data);
@@ -83,6 +88,7 @@ angular.module('starter.controllers', [])
     percAverageWinRate : 0,
     percAverageSalesCycle : 0,
     currentSales: $rootScope.salesValue,
+    decSales: $rootScope.currentDecValue,
     targetSales: null,
     percUplift: 0,
     varUplift: null,
@@ -97,6 +103,8 @@ angular.module('starter.controllers', [])
   //change method one
 
   $scope.targetValChange = function() {
+    console.log($scope.rangeModel.targetSales)
+    console.log($scope.rangeModel.decSales)
 
     $scope.rangeModel.hideValue = true;
 
@@ -115,7 +123,8 @@ angular.module('starter.controllers', [])
               data: {
                 'sales_perc_increase':
                 {
-                  'new_sales': $scope.rangeModel.targetSales
+                  'new_sales': $scope.rangeModel.targetSales,
+                  'current_sales': $scope.rangeModel.decSales
                }
              },
           }).then(function successCallback(response) {
@@ -194,7 +203,8 @@ angular.module('starter.controllers', [])
                         data: {
                           'sales_perc_increase':
                           {
-                            'new_sales': $scope.rangeModel.targetSales
+                            'new_sales': $scope.rangeModel.targetSales,
+                            'current_sales': $scope.rangeModel.decSales
                          }
                        },
                     }).then(function successCallback(response) {

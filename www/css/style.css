@@ -99,3 +99,51 @@ border-radius:50%;width:100px;height:100px; display:inline-block; float:left
   margin: 17px 0px !important;
   display: block;
 }
+.benchmark-deals{
+  position: relative;
+}
+.benchmark-deals:before {
+    content: "";
+    position: absolute;
+    left: 9.5%;
+    width: 39px;
+    height: 30px;
+    border-radius: 50px;
+    background: rgba(134,188,64, 0.8);
+}
+.benchmark-deal-size{
+  position: relative;
+}
+.benchmark-deal-size:before {
+    content: "";
+    position: absolute;
+    left: 16%;
+    width: 50px;
+    height: 30px;
+    border-radius: 50px;
+    background: rgba(134,188,64, 0.8);
+}
+.benchmark-win-rate{
+  position: relative;
+}
+.benchmark-win-rate:before {
+    content: "";
+    position: absolute;
+    left: 14.5%;
+    width: 34px;
+    height: 30px;
+    border-radius: 50px;
+    background: rgba(134,188,64, 0.8);
+}
+.benchmark-sales-cycle{
+  position: relative;
+}
+.benchmark-sales-cycle:before {
+    content: "";
+    position: absolute;
+    left: 17%;
+    width: 48px;
+    height: 30px;
+    border-radius: 50px;
+    background: rgba(134,188,64, 0.8);
+}

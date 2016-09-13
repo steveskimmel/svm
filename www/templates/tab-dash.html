@@ -4,31 +4,27 @@
        <span class="input-label" style="color: #f8f8f8;" >Deals (#)</span>
        <input type="number" placeholder=" Current number of deals" ng-model="calcSales.deals" style="background-color: #f8f8f8;">
        </label>
-       <br/>
        <label class="item item-input item-stacked-label col col-center" style="border-color: Transparent;">
        <span class="input-label" style="color: #f8f8f8;">Deals Size (R)</span>
        <input type="number" placeholder=" Current average deal size" ng-model="calcSales.dealsSize" style="background-color: #f8f8f8;">
        </label>
-       <br/>
        <label class="item item-input item-stacked-label col col-center" style="border-color: Transparent;">
        <span class="input-label" style="color: #f8f8f8;">Average Win Rate (%)</span>
        <input type="number" placeholder=" Current average win rate" ng-model="calcSales.averageWinRate" style="background-color: #f8f8f8;">
        </label>
-       <br/>
        <label class="item item-input item-stacked-label col col-center" style="border-color: Transparent;">
        <span class="input-label" style="color: #f8f8f8;">Average Sales Cycle (days)</span>
        <input type="number" placeholder=" Current average sales cycle" ng-model="calcSales.averageSalesCycle" style="background-color: #f8f8f8;">
        </label>
-       <br/>
+     </br>
        <div class="load-button">
         <button class="button button-block"  style="background-color:#86BC40; color:#F8F8F8;" ng-click="calculate()" ng-hide="calcSales.hideValue">
            Calculate Sales Velocity
         </button>
         <ion-spinner icon="lines" ng-show="calcSales.hideValue"></ion-spinner>
-
       </div>
       <div class="item"style="background-color:#586261; border-color: Transparent" ng-show="calcSales.haveCalc">
-         <ion-label style="color: #f8f8f8; text-align:left">Calculated Sales Per Year: {{calcSales.value}}</ion-label>
+         <ion-label style="color: #f8f8f8; text-align:left">Calculated Sales Per Year: {{calcSales.dec_value | currency : "R" : 0}}</ion-label>
       </div>
 
 

@@ -10,7 +10,6 @@ angular.module('starter.controllers', [])
       dealsSize: null,
       averageWinRate: null,
       averageSalesCycle: null,
-      value: null,
       dec_value: null,
       hideValue: false,
       haveCalc: false
@@ -53,14 +52,10 @@ angular.module('starter.controllers', [])
                 }
                 $scope.calcSales.hideValue = false;
                   console.log(response.data);
-                  $scope.calcSales.value = response.data.split(';')[0];
-                  $scope.calcSales.dec_value = parseFloat(response.data.split(';')[1]);
-                  console.log($scope.calcSales.value);
+                  $scope.calcSales.dec_value = parseFloat(response.data);
                   console.log($scope.calcSales.dec_value);
                   $scope.calcSales.haveCalc = true;
-                  $rootScope.salesValue = $scope.calcSales.value;
                   $rootScope.currentDecValue = $scope.calcSales.dec_value
-                  console.log("rootscope: "+$rootScope.salesValue)
                 }, function errorCallback(response) {
                   console.log(response.data);
                   if(response.status === 500 || response.status === 404)
@@ -85,19 +80,19 @@ angular.module('starter.controllers', [])
 
   $scope.rangeModel =
   {
-    percDeals : 0,
-    percDealsSize : 0,
-    percAverageWinRate : 0,
-    percAverageSalesCycle : 0,
-    currentSales: $rootScope.salesValue,
+    percDealsDec : 0,
+    percDealsSizeDec : 0,
+    percAverageWinRateDec : 0,
+    percAverageSalesCycleDec : 0,
     decSales: $rootScope.currentDecValue,
     current_deals:$rootScope.current_deals,
     current_deal_size:  $rootScope.current_deal_size,
     current_win_rate: $rootScope.current_win_rate,
     current_avg_sales_cycle: $rootScope.current_avg_sales_cycle,
     targetSales: null,
-    percUplift: 0,
-    varUplift: null,
+    targetSalesDec: null,
+    percUpliftDec: 0,
+    varUpliftDec: null,
     hideValue: false
   }
 
@@ -109,11 +104,10 @@ angular.module('starter.controllers', [])
   //change method one
 
   $scope.targetValChange = function() {
-    console.log($scope.rangeModel.targetSales)
     console.log($scope.rangeModel.decSales)
 
     $scope.rangeModel.hideValue = true;
-
+    $scope.rangeModel.targetSalesDec = $scope.rangeModel.targetSales;
     //  $scope.rangeModel.percUplift = (($scope.rangeModel.targetSales - $scope.rangeModel.currentSales)/ $scope.rangeModel.currentSales)*100;
     //  console.log("per value uplift: "+$scope.rangeModel.percUplift)
 
@@ -143,7 +137,7 @@ angular.module('starter.controllers', [])
               $scope.rangeModel.hideValue = false;
                 //console.log(response);
                 console.log("percentage uplift is: "+response.data+" now we call percentage var increase method");
-                $scope.rangeModel.percUplift = response.data;
+                $scope.rangeModel.percUpliftDec = parseFloat(response.data);
                 $scope.percentageVariableIncrease();
              }
             }, function errorCallback(response) {
@@ -168,12 +162,12 @@ angular.module('starter.controllers', [])
                       data: {
                         'variables_perc_increase':
                         {
-                          'percentage_increase': $scope.rangeModel.percUplift
+                          'percentage_increase': $scope.rangeModel.percUpliftDec
                        }
                      },
                   }).then(function successCallback(response) {
                       console.log(response.data);
-                      $scope.rangeModel.varUplift = response.data;
+                      $scope.rangeModel.varUpliftDec = parseFloat(response.data);
                       $scope.rangeValueSet();
 
                     }, function errorCallback(response) {
@@ -182,10 +176,11 @@ angular.module('starter.controllers', [])
             }
 
             $scope.rangeValueSet = function() {
-              $scope.rangeModel.percDeals = $scope.rangeModel.varUplift;
-              $scope.rangeModel.percDealsSize = $scope.rangeModel.varUplift;
-              $scope.rangeModel.percAverageWinRate = $scope.rangeModel.varUplift;
-              $scope.rangeModel.percAverageSalesCycle = $scope.rangeModel.varUplift;
+
+              $scope.rangeModel.percDealsDec = $scope.rangeModel.varUpliftDec;
+              $scope.rangeModel.percDealsSizeDec = $scope.rangeModel.varUpliftDec;
+              $scope.rangeModel.percAverageWinRateDec = $scope.rangeModel.varUpliftDec;
+              $scope.rangeModel.percAverageSalesCycleDec = $scope.rangeModel.varUpliftDec;
 
             }
 
@@ -209,7 +204,7 @@ angular.module('starter.controllers', [])
                         data: {
                           'sales_perc_increase':
                           {
-                            'new_sales': $scope.rangeModel.targetSales,
+                            'new_sales': $scope.rangeModel.targetSalesDec,
                             'current_sales': $scope.rangeModel.decSales
                          }
                        },
@@ -223,7 +218,7 @@ angular.module('starter.controllers', [])
                         $scope.rangeModel.hideValue = false;
                           //console.log(response);
                           console.log("percentage uplift is: "+response.data+" now we call percentage var increase method");
-                          $scope.rangeModel.percUplift = response.data;
+                          $scope.rangeModel.percUpliftDec = parseFloat(response.data);
                           //$scope.percentageVariableIncrease();
                        }
                       }, function errorCallback(response) {
@@ -241,6 +236,12 @@ angular.module('starter.controllers', [])
             //
 
             $scope.rangeModelChange = function() {
+
+              console.log("% Deals : " + $scope.rangeModel.percDealsDec);
+              console.log("Deal Size : " + $scope.rangeModel.percDealsSizeDec);
+              console.log("% Win Rate : " + $scope.rangeModel.percAverageWinRateDec);
+              console.log("Sales Cycle : " + $scope.rangeModel.percAverageSalesCycleDec);
+
                   $http({
                         method:"POST",
                         url:"https://digitalforce-sales-model.herokuapp.com/",
@@ -251,10 +252,10 @@ angular.module('starter.controllers', [])
                         data: {
                           'increased_sales_value':
                           {
-                            'percentage_increase_deals': parseFloat($scope.rangeModel.percDeals),
-                            'percentage_increase_deal_size':parseFloat($scope.rangeModel.percDealsSize),
-                            'percentage_increase_win_rate':parseFloat($scope.rangeModel.percAverageWinRate),
-                            'percentage_increase_avg_sales_cycle':parseFloat($scope.rangeModel.percAverageSalesCycle),
+                            'percentage_increase_deals': parseFloat($scope.rangeModel.percDealsDec),
+                            'percentage_increase_deal_size':parseFloat($scope.rangeModel.percDealsSizeDec),
+                            'percentage_increase_win_rate':parseFloat($scope.rangeModel.percAverageWinRateDec),
+                            'percentage_increase_avg_sales_cycle':parseFloat($scope.rangeModel.percAverageSalesCycleDec),
                             'current_deals': parseInt($scope.rangeModel.current_deals),
                             'current_deal_size': parseInt($scope.rangeModel.current_deal_size),
                             'current_win_rate': parseInt($scope.rangeModel.current_win_rate),
@@ -265,7 +266,7 @@ angular.module('starter.controllers', [])
                         console.log("new target sales value: "+response.data);
 
                       //
-                        $scope.rangeModel.targetSales = response.data;
+                        $scope.rangeModel.targetSalesDec = parseFloat(response.data);
                         $scope.percUpliftAfterSliderChange();
                       }, function errorCallback(response) {
                         console.log(response);

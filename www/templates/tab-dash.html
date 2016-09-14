@@ -22,10 +22,22 @@
            Calculate Sales Velocity
         </button>
         <ion-spinner icon="lines" ng-show="calcSales.hideValue"></ion-spinner>
-      </div>
-      <div class="item"style="background-color:#586261; border-color: Transparent" ng-show="calcSales.haveCalc">
-         <ion-label style="color: #f8f8f8; text-align:left">Calculated Sales Per Year: {{calcSales.dec_value | currency : "R" : 0}}</ion-label>
-      </div>
+     </div>
+     <div align="center" ng-show="calcSales.haveCalc">
+     <div class="item wrapper"style="background-color:#586261; border-color: Transparent" >
+        <ion-label style="color: #f8f8f8; text-align:center">Calculated Sales Per Year:</ion-label>
+        <p class="rcorners6" style="color: #f8f8f8; font-size: 50px; text-align:center" ><b>{{calcSales.dec_value | currency : "R" : 0}}</b></p>
+
+     </div>
+     <!--<div class="load-button">
+      <button class="button button-block"  style="background-color:#86BC40; color:#F8F8F8;" ui-sref="tab.chats">
+         Control Sales Velocity
+      </button>
+    </div>-->
+       <p style="color: #f8f8f8; text-align:center">Click the 'Control' Tab to Continue...</p>
+   <!--    <i class="fa fa-hand-o-down fa-lg" aria-hidden="true"></i> -->
+       <ion-label class = "ion icon ion-arrow-down-a"></ion-label>
+     </div>
 
 
 

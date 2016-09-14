@@ -238,3 +238,8 @@ border-radius:50%;width:100px;height:100px; display:inline-block; float:left
 .calc-output {
   float: right;
 }
+
+.arrow-size {
+  font-size: 50px;
+  color: #f8f8f8;
+}

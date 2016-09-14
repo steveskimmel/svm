@@ -93,7 +93,11 @@ angular.module('starter.controllers', [])
     targetSalesDec: null,
     percUpliftDec: 0,
     varUpliftDec: null,
-    hideValue: false
+    hideValue: false,
+    fontColorDeals: "color: #f8f8f8;",
+    fontColorDealSize: "color: #f8f8f8;",
+    fontColorWinRate: "color: #f8f8f8;",
+    fontColorSalesCycle: "color: #f8f8f8;"
   }
 
   $scope.showToast = function(){
@@ -271,5 +275,37 @@ angular.module('starter.controllers', [])
                       }, function errorCallback(response) {
                         console.log(response);
                   });
+              }
+
+
+              $scope.foresterFunction = function() {
+                if($scope.rangeModel.percDealsDec >= 0 && $scope.rangeModel.percDealsDec <= 5){
+                  console.log("forester");
+                  $scope.rangeModel.fontColorDeals = "color: #86BC40;"
+                }
+                else{
+                  $scope.rangeModel.fontColorDeals = "color: #f8f8f8;"
+                }
+
+                if($scope.rangeModel.percDealsSizeDec >= 10 && $scope.rangeModel.percDealsSizeDec <= 20){
+                  $scope.rangeModel.fontColorDealSize = "color: #86BC40;"
+                }
+                else{
+                  $scope.rangeModel.fontColorDealSize = "color: #f8f8f8;"
+                }
+
+                if($scope.rangeModel.percAverageWinRateDec >= 8 && $scope.rangeModel.percAverageWinRateDec <= 10){
+                  $scope.rangeModel.fontColorWinRate = "color: #86BC40;"
+                }
+                else{
+                  $scope.rangeModel.fontColorWinRate = "color: #f8f8f8;"
+                }
+
+                if($scope.rangeModel.percAverageSalesCycleDec >= 12 && $scope.rangeModel.percAverageSalesCycleDec <= 20){
+                  $scope.rangeModel.fontColorSalesCycle = "color: #86BC40;"
+                }
+                else{
+                  $scope.rangeModel.fontColorSalesCycle = "color: #f8f8f8;"
+                }
               }
 })

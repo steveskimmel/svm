@@ -144,6 +144,7 @@ angular.module('starter.controllers', [])
                 //console.log(response);
                 console.log("percentage uplift is: "+response.data+" now we call percentage var increase method");
                 $scope.rangeModel.percUplift = response.data;
+                $scope.rangeModel.percUplift_dec = response.data;
                 $scope.percentageVariableIncrease();
              }
             }, function errorCallback(response) {

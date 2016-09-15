@@ -15,6 +15,13 @@ angular.module('starter.controllers', [])
       haveCalc: false
     }
 
+    $scope.reset = function(){
+      $scope.calcSales.deals = null;
+      $scope.calcSales.dealsSize = null;
+      $scope.calcSales.averageWinRate = null;
+      $scope.calcSales.averageSalesCycle = null;
+    }
+
 
     $scope.showToast = function(){
     <!-- ionicToast.show(message, position, stick, time); -->

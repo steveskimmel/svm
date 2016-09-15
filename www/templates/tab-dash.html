@@ -1,7 +1,15 @@
 <ion-view view-title="Calculate Sales Velocity" style="background-color:#586261;" >
   <ion-content class = "padding">
+
+  </br>
+        <div class="calc-outputs-box">
+          <img class="info-output" src="img/Deloitte-Digital.png" style = "width:40%;height:30%;"></i>
+          <i class="icon icon ion-refresh reset-size reset-align-right" ng-click="reset()"></i>
+        </div>
+
        <label class="item item-input item-stacked-label col col-center"  style="border-color: Transparent;">
-       <span class="input-label" style="color: #f8f8f8;" >Deals (#)</span>
+       <span class="input-label" style="color: #f8f8f8;" >Deals (#)
+       </span>
        <input type="number" placeholder=" Current number of deals" ng-model="calcSales.deals" style="background-color: #f8f8f8;">
        </label>
        <label class="item item-input item-stacked-label col col-center" style="border-color: Transparent;">
@@ -18,11 +26,13 @@
        </label>
      </br>
        <div class="load-button">
+
         <button class="button button-block"  style="background-color:#86BC40; color:#F8F8F8;" ng-click="calculate()" ng-hide="calcSales.hideValue">
            Calculate Sales Velocity
         </button>
         <ion-spinner icon="lines" ng-show="calcSales.hideValue"></ion-spinner>
      </div>
+
      <div align="center" ng-show="calcSales.haveCalc">
      <div class="item wrapper"style="background-color:#586261; border-color: Transparent" >
         <ion-label style="color: #f8f8f8; text-align:center">Calculated Sales Per Year:</ion-label>

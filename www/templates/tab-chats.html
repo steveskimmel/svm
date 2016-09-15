@@ -6,14 +6,14 @@
     </label>
     <div class="load-button">
      <button class="button button-block"  style="background-color:#86BC40; color:#F8F8F8;" ng-click="targetValChange()" ng-hide="rangeModel.hideValue">
-        Calculate Sales Velocity
+        Calculate Lever Uplifts
      </button>
      <ion-spinner icon="lines" ng-show="rangeModel.hideValue"></ion-spinner>
 
    </div>
  </br>
    <div class="item"style="background-color:#586261; border-color: Transparent" ng-show="calcSales.haveCalc">
-      <ion-label style="color: #f8f8f8; text-align:left">Calculated Sales Per Year: {{calcSales.value | currency : "R" : 0}}</ion-label>
+      <ion-label style="color: #f8f8f8; text-align:left">Calculate Sales Velocity: {{calcSales.value | currency : "R" : 0}}</ion-label>
    </div>
 
 <div class="calc-outputs-box">
@@ -42,10 +42,11 @@
         <ion-label class="info-output" style="color: #f8f8f8; font-size:14px">Increase on Deals:</ion-label>
         <ion-label class="info-output" style="{{rangeModel.fontColorDeals}} font-size:14px"><b>{{rangeModel.percDealsDec | number : 2}}%</b></ion-label>
       </div>
-        <div class = "range benchmark-deals rcorners1"  style="background-color:#586261;">
-          <i  style="color: #f8f8f8; background-color:#586261;">0</i>
-           <input type = "range" name = "range1" ng-model = "rangeModel.percDealsDec" ng-change="foresterFunction()" min = "0" max = "100" on-release="rangeModelChange()"  style="background-color:#586261;">
-          <i  style="color: #f8f8f8; background-color:#586261;">100</i>
+        <div class = "range rcorners1"  style="background-color:#586261;">
+          <i style="color: #f8f8f8; background-color:#586261;">0</i>
+           <input type = "range" name = "range1" ng-model = "rangeModel.percDealsDec" ng-change="foresterFunction()" min = "0" max = "50" on-release="rangeModelChange()"  style="background-color:#586261;">
+          <i  style="color: #f8f8f8; background-color:#586261;">50</i>
+          <span class="benchmark"><span class="benchmark-deals"></span></span>
         </div>
      </ion-item>
 
@@ -54,10 +55,11 @@
        <ion-label class="info-output" style="color: #f8f8f8; font-size:14px">Increase on Deals Size:</ion-label>
        <ion-label class="info-output" style="{{rangeModel.fontColorDealSize}} font-size:14px"><b>{{rangeModel.percDealsSizeDec | number : 2}}%</b></ion-label>
      </div>
-       <div class = "range benchmark-deal-size rcorners1" style="background-color:#586261;">
+       <div class = "range rcorners1" style="background-color:#586261;">
          <i style="color: #f8f8f8;">0</i>
-          <input type = "range" name = "range1" ng-model = "rangeModel.percDealsSizeDec" ng-change="foresterFunction()" min = "0" max = "100" on-release="rangeModelChange()" style="background-color:#586261;">
-         <i style="color: #f8f8f8;">100</i>
+          <input type = "range" name = "range1" ng-model = "rangeModel.percDealsSizeDec" ng-change="foresterFunction()" min = "0" max = "50" on-release="rangeModelChange()" style="background-color:#586261;">
+         <i style="color: #f8f8f8;">50</i>
+         <span class="benchmark"><span class="benchmark-deal-size"></span></span>
        </div>
     </ion-item>
 
@@ -66,10 +68,11 @@
       <ion-label class="info-output" style="color: #f8f8f8; font-size:14px">Increase on Average Win Rate:</ion-label>
       <ion-label class="info-output" style="{{rangeModel.fontColorWinRate}} font-size:14px"><b>{{rangeModel.percAverageWinRateDec | number : 2}}%</b></ion-label>
     </div>
-      <div class = "range benchmark-win-rate rcorners1" style="background-color:#586261;">
+      <div class = "range rcorners1" style="background-color:#586261;">
         <i style="color: #f8f8f8;">0</i>
-         <input type = "range" name = "range1" ng-model = "rangeModel.percAverageWinRateDec" ng-change="foresterFunction()" min = "0" max = "100" on-release="rangeModelChange()" style="background-color:#586261;">
-        <i style="color: #f8f8f8;">100</i>
+         <input type = "range" name = "range1" ng-model = "rangeModel.percAverageWinRateDec" ng-change="foresterFunction()" min = "0" max = "50" on-release="rangeModelChange()" style="background-color:#586261;">
+        <i style="color: #f8f8f8;">50</i>
+        <span class="benchmark"><span class="benchmark-win-rate"></span></span>
       </div>
    </ion-item>
 
@@ -78,10 +81,11 @@
      <ion-label class="info-output" style="color: #f8f8f8; font-size:14px">Increase on Average Sales Cycle:</ion-label>
      <ion-label class="info-output" style="{{rangeModel.fontColorSalesCycle}} font-size:14px"><b>{{rangeModel.percAverageSalesCycleDec | number : 2}}%</b></ion-label>
    </div>
-     <div class = "range benchmark-sales-cycle rcorners1" style="background-color:#586261;">
+     <div class = "range rcorners1" style="background-color:#586261;">
        <i style="color: #f8f8f8;">0</i>
-        <input type = "range" name = "range1" ng-model = "rangeModel.percAverageSalesCycleDec" ng-change="foresterFunction()" min = "0" max = "100" on-release="rangeModelChange()"  style="background-color:#586261;">
-       <i style="color: #f8f8f8;">100</i>
+        <input type = "range" name = "range1" ng-model = "rangeModel.percAverageSalesCycleDec" ng-change="foresterFunction()" min = "0" max = "50" on-release="rangeModelChange()"  style="background-color:#586261;">
+       <i style="color: #f8f8f8;">50</i>
+       <span class="benchmark"><span class="benchmark-sales-cycle"></span></span>
      </div>
   </ion-item>
      </div>

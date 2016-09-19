@@ -101,6 +101,7 @@ border-radius:50%;width:100px;height:100px; display:inline-block; float:left
 }
 
 .range input {
+  -webkit-transform: translate3d(0,0,0);
   background-color: transparent !important;
   z-index: 1;
 }
@@ -114,6 +115,7 @@ border-radius:50%;width:100px;height:100px; display:inline-block; float:left
   text-align:  right;
 }
 .benchmark {
+  -webkit-transform: translate3d(0,0,0);
   position: absolute;
   left: 55px;
   right: 55px;

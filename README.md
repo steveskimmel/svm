@@ -1,0 +1,1 @@
+This is an Ionic project designed for Deloite Digital South Africa. It was designed as the front end to a Sales Velocity Model App project that we worked on. It is deisgned to integrate with the Python webservice specified on this repository (SalesVelocityModel).
